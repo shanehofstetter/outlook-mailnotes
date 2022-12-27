@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PrimaryButton, TextField, TooltipHostBase } from "@fluentui/react";
+import { PrimaryButton, TextField } from "@fluentui/react";
 import Progress from "./Progress";
 
 /* global require */
@@ -7,6 +7,7 @@ import Progress from "./Progress";
 export interface AppProps {
   title: string;
   isOfficeInitialized: boolean;
+  itemChangedRegister: any;
 }
 
 export interface AppState {
@@ -27,13 +28,26 @@ const DEBUG = false;
 export default class App extends React.Component<AppProps, AppState> {
   constructor(props, context) {
     super(props, context);
+    if (props.itemChangedRegister) {
+      props.itemChangedRegister(this.onItemChanged);
+    }
     this.state = {
       saveDisabled: true,
       customProps: null,
       notes: '',
       fatalError: '',
-      logs: []
+      logs: [],
     };
+  }
+
+  onItemChanged = () => {
+    this.log("item changed");
+    this.setState((prevState) => ({
+      ...prevState,
+      customProps: null,
+      notes: null
+    }));
+    this.loadNotes();
   }
 
   log = (msg) => {

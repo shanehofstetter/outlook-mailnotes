@@ -15,18 +15,27 @@ const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <ThemeProvider>
-        <Component title={title} isOfficeInitialized={isOfficeInitialized} />
+        <Component title={title} isOfficeInitialized={isOfficeInitialized} itemChangedRegister={itemChangedRegister} />
       </ThemeProvider>
     </AppContainer>,
     document.getElementById("container")
   );
 };
 
+let itemChangedHandler: (type: Office.EventType) => void;
+const itemChangedRegister = (f: (type: Office.EventType) => void) => {
+    itemChangedHandler = f;
+};
+
 /* Render application after Office initializes */
 Office.onReady(() => {
   isOfficeInitialized = true;
   render(App);
+
+  Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, itemChangedHandler);
 });
+
+render(App);
 
 if ((module as any).hot) {
   (module as any).hot.accept("./components/App", () => {
