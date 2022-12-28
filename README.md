@@ -11,32 +11,32 @@ https://user-images.githubusercontent.com/13404717/209875727-651e111d-8cbb-485c-
 
 ## Installation
 
-The Add-In is not yet available in the Marketplace, it has to be installed manually from the URL (or you can clone the repo and install it from the local source).
-Follow these steps:
+The Add-In is not yet available in the Marketplace, currently it has to be installed as a custom add-in.
+To do that, follow these steps:
 
 1. Open Outlook
 2. Open Add-In Management
 3. Go to "My Add-Ins"
 4. Click "Add custom Add-In"
 5. Select "From URL"
-6. Insert the URL https://outlookmailnotes.z1.web.core.windows.net/manifest.xml
+6. Insert the following URL: https://outlookmailnotes.z1.web.core.windows.net/manifest.xml
 7. Install
 
 ## Run locally (OS X)
 
-### 1. Clone the Repo
+**1. Clone the Repo**
 
-### 2. Install the packages
+**2. Install the packages**
 
 `npm install`
 
-### 3. Start the webpack server
+**3. Start the webpack server**
 
 `npm run dev-server`
 
 runs on port 3000 per default
 
-### 4. Install the Add-In in Outlook
+**4. Install the Add-In in Outlook**
 
 - choose "add from file.."
 - select the manifest.xml from the repository
