@@ -3,7 +3,7 @@
 ![logo](./assets/icon-128.png)
 
 Simple Microsoft Outlook extension that allows you to add notes to an email.
-The notes should be available across devices, they are stored using the Microsoft Office APIs (no data is shared with 3rd party services).
+The notes are be available across devices as they are stored using the Microsoft Office APIs (no data is shared with 3rd party services).
 
 
 https://user-images.githubusercontent.com/13404717/209876856-bc68c302-6571-4d4c-9f35-a57bb426f5df.mov
