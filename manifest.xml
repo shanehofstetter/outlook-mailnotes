@@ -12,10 +12,7 @@
   <Description DefaultValue="Add notes to your emails." />
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png" />
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png" />
-  <SupportUrl DefaultValue="https://github.com/shanehofstetter" />
-  <AppDomains>
-    <AppDomain>https://github.com/shanehofstetter</AppDomain>
-  </AppDomains>
+  <SupportUrl DefaultValue="https://github.com/shanehofstetter/outlook-mailnotes" />
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
@@ -85,7 +82,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Mailnotes" />
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Sidebar" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Notes" />
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip"
@@ -142,7 +139,7 @@
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Mailnotes" />
-          <bt:String id="TaskpaneButton.Label" DefaultValue="Show Sidebar" />
+          <bt:String id="TaskpaneButton.Label" DefaultValue="Show Notes" />
         </bt:ShortStrings>
         <bt:LongStrings>
           <bt:String id="TaskpaneButton.Tooltip"
