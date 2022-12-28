@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PartialTheme, PrimaryButton, TextField } from "@fluentui/react";
+import { ActionButton, PartialTheme, Stack, TextField } from "@fluentui/react";
 import Progress from "./Progress";
 
 /* global require */
@@ -85,10 +85,7 @@ export default class App extends React.Component<AppProps, AppState> {
     Office.context.mailbox.item.loadCustomPropertiesAsync((result: Office.AsyncResult<Office.CustomProperties>) => {
       if (result.status == Office.AsyncResultStatus.Failed) {
         this.setState((prevState) => ({ ...prevState, fatalError: 'Failed to load notes' }))
-      }
-      else {
-        // Successfully loaded custom properties,
-        // can get them from the asyncResult argument.
+      } else {
         let customProps = result.value;
         let notes = customProps.get("notes");
         this.log("loaded notes: " + notes);
@@ -142,11 +139,13 @@ export default class App extends React.Component<AppProps, AppState> {
             </div>
           ) : null
         }
+        <Stack horizontalAlign="end">
+          <ActionButton iconProps={{ iconName: 'Save' }} allowDisabledFocus disabled={this.state.saveDisabled} onClick={this.save}>
+            Save
+          </ActionButton>
+        </Stack>
         <div>
-          <TextField label="Notes" multiline autoAdjustHeight value={this.state.notes} rows={10} onChange={this.onChange} />
-        </div>
-        <div style={{ marginTop: 10 }}>
-          <PrimaryButton text="Save" onClick={this.save} allowDisabledFocus disabled={this.state.saveDisabled} />
+          <TextField placeholder="Add notes.." multiline autoAdjustHeight value={this.state.notes} rows={10} onChange={this.onChange} />
         </div>
         {this.state.logs.length > 0 ? (
           <div>

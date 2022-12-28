@@ -11,14 +11,36 @@ let isOfficeInitialized = false;
 
 const title = "Mailnotes";
 
+
 const lightTheme: PartialTheme = {
 };
 
+// https://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/7.0/theming-designer/index.html
 const darkTheme: PartialTheme = {
-  semanticColors: {
-    bodyBackground: '#1E1E1E',
-    bodyText: 'white',
-  },
+  palette: {
+    themePrimary: '#0078d4',
+    themeLighterAlt: '#eff6fc',
+    themeLighter: '#deecf9',
+    themeLight: '#c7e0f4',
+    themeTertiary: '#71afe5',
+    themeSecondary: '#2b88d8',
+    themeDarkAlt: '#106ebe',
+    themeDark: '#005a9e',
+    themeDarker: '#004578',
+    neutralLighterAlt: '#282828',
+    neutralLighter: '#313131',
+    neutralLight: '#3f3f3f',
+    neutralQuaternaryAlt: '#484848',
+    neutralQuaternary: '#4f4f4f',
+    neutralTertiaryAlt: '#6d6d6d',
+    neutralTertiary: '#c8c8c8',
+    neutralSecondary: '#d0d0d0',
+    neutralPrimaryAlt: '#dadada',
+    neutralPrimary: '#ffffff',
+    neutralDark: '#f4f4f4',
+    black: '#f8f8f8',
+    white: '#1e1e1e',
+  }
 };
 
 // Office.context.officeTheme seems not to be supported for Outlook
