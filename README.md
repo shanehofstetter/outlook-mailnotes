@@ -9,9 +9,11 @@ The notes are be available across devices as they are stored using the Microsoft
 https://user-images.githubusercontent.com/13404717/209876856-bc68c302-6571-4d4c-9f35-a57bb426f5df.mov
 
 
-## Tested in Applications
+## Tested/Supported Applications
 - Outlook for Mac (Version 16.x)
 - Outlook for Web (using Chrome)
+
+Outlook for Windows should work as well, but is not tested (feedback is appreciated).
 
 ## Installation
 
