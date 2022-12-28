@@ -21,5 +21,3 @@ runs on port 3000 per default
 - select the manifest.xml from the dist directory
 - installation should succeed and you should see the new Mailnotes Add-In in the taskbar, clicking on it should open the sidebar
 
-## Roadmap
-- Save via CMD+s/Ctrl+s

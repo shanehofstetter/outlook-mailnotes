@@ -40,6 +40,14 @@ export default class App extends React.Component<AppProps, AppState> {
     };
   }
 
+  handleKeyPressed = (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+      // Ctrl+S or Cmd+S was pressed
+      this.save();
+      event.preventDefault();
+    }
+  }
+
   onItemChanged = () => {
     this.log("item changed");
     this.setState((prevState) => ({
@@ -65,9 +73,15 @@ export default class App extends React.Component<AppProps, AppState> {
 
   componentDidMount(): void {
     if (this.props.isOfficeInitialized) this.loadNotes();
+    document.addEventListener('keydown', this.handleKeyPressed);
+  }
+
+  componentWillUnmount(): void {
+    document.removeEventListener('keydown', this.handleKeyPressed);
   }
 
   save = () => {
+    this.log("saving..");
     this.state.customProps.set("notes", this.state.notes);
     this.state.customProps.saveAsync((result) => {
       this.log(JSON.stringify(result.status));
@@ -126,20 +140,6 @@ export default class App extends React.Component<AppProps, AppState> {
 
     return (
       <div>
-        {
-          DEBUG ? (
-            <div>
-              {Office.context.mailbox.item.itemId}
-              <br></br>
-              {Office.context.mailbox.item.subject}
-              <br></br>
-              {Office.context.mailbox.item.conversationId}
-              <br></br>
-              {Office.context.displayLanguage}
-              <br></br>
-            </div>
-          ) : null
-        }
         <Stack horizontalAlign="end">
           <ActionButton iconProps={{ iconName: 'Save' }} allowDisabledFocus disabled={this.state.saveDisabled} onClick={this.save}>
             Save
@@ -151,11 +151,8 @@ export default class App extends React.Component<AppProps, AppState> {
             borderless description={this.state.notes?.length == MAX_NOTE_CHARACTERS ? `Max. ${MAX_NOTE_CHARACTERS} characters` : ""}
           />
         </div>
-        {this.state.logs.length > 0 ? (
-          <div>
-            {this.state.logs.map(log => (<p>{JSON.stringify(log)}</p>))}
-          </div>
-        ) : null}
+        {/* workaround not having a debugger/console available on os x for outlook add-ins */}
+        {this.state.logs.length > 0 ? (<div>{this.state.logs.map(log => (<p>{JSON.stringify(log)}</p>))}</div>) : null}
       </div>
     );
   }
