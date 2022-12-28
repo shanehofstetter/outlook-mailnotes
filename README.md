@@ -23,4 +23,3 @@ runs on port 3000 per default
 
 ## Roadmap
 - Save via CMD+s/Ctrl+s
-- Show character limit / how many characters left

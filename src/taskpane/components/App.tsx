@@ -20,11 +20,10 @@ export interface AppState {
 }
 
 const DEBUG = false;
+const MAX_NOTE_CHARACTERS = 2000; // The maximum length of a CustomProperties JSON object is 2500 characters. let's use a sensible limit for a note.
 
 // notes:
-// The maximum length of a CustomProperties JSON object is 2500 characters.
 // Outlook on Mac doesn't cache custom properties. If the user's network goes down, mail add-ins can't access their custom properties.
-
 
 export default class App extends React.Component<AppProps, AppState> {
   constructor(props, context) {
@@ -95,7 +94,9 @@ export default class App extends React.Component<AppProps, AppState> {
   }
 
   onChange = (_ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {
-    this.setState((prevState) => ({ ...prevState, notes: newText, saveDisabled: false }));
+    if (!newText || newText.length <= MAX_NOTE_CHARACTERS) {
+      this.setState((prevState) => ({ ...prevState, notes: newText, saveDisabled: false }));
+    }
   }
 
   render() {
@@ -144,10 +145,10 @@ export default class App extends React.Component<AppProps, AppState> {
             Save
           </ActionButton>
         </Stack>
-        <Separator styles={{root: { padding: 0 }}}/>
+        <Separator styles={{ root: { padding: 0 } }} />
         <div>
           <TextField placeholder="Add notes.." multiline autoAdjustHeight value={this.state.notes} rows={10} onChange={this.onChange}
-          borderless
+            borderless description={this.state.notes?.length == MAX_NOTE_CHARACTERS ? `Max. ${MAX_NOTE_CHARACTERS} characters` : ""}
           />
         </div>
         {this.state.logs.length > 0 ? (
