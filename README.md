@@ -1,7 +1,9 @@
 # Mailnotes
 
+![logo](./assets/icon-128.png)
+
 Simple Microsoft Outlook extension that allows you to add notes to an email.
-The notes should be available across devices, they are stored using the Microsoft Offices APIs.
+The notes should be available across devices, they are stored using the Microsoft Office APIs.
 
 ## Run locally (OS X)
 
