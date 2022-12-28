@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ActionButton, PartialTheme, Stack, TextField } from "@fluentui/react";
+import { ActionButton, PartialTheme, Separator, Stack, TextField } from "@fluentui/react";
 import Progress from "./Progress";
 
 /* global require */
@@ -144,8 +144,11 @@ export default class App extends React.Component<AppProps, AppState> {
             Save
           </ActionButton>
         </Stack>
+        <Separator styles={{root: { padding: 0 }}}/>
         <div>
-          <TextField placeholder="Add notes.." multiline autoAdjustHeight value={this.state.notes} rows={10} onChange={this.onChange} />
+          <TextField placeholder="Add notes.." multiline autoAdjustHeight value={this.state.notes} rows={10} onChange={this.onChange}
+          borderless
+          />
         </div>
         {this.state.logs.length > 0 ? (
           <div>

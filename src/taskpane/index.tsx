@@ -17,6 +17,9 @@ const lightTheme: PartialTheme = {
 
 // https://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/7.0/theming-designer/index.html
 const darkTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: '#1E1E1E',
+  },
   palette: {
     themePrimary: '#0078d4',
     themeLighterAlt: '#eff6fc',
@@ -54,7 +57,7 @@ const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <div style={{ width: '100%', height: '100%', backgroundColor: theme.semanticColors?.bodyBackground }}>
-        <ThemeProvider theme={theme} style={{ padding: '10px 20px' }}>
+        <ThemeProvider theme={theme} style={{ padding: '8px 14px' }}>
           <Component
             title={title}
             isOfficeInitialized={isOfficeInitialized}
