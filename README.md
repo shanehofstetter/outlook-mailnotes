@@ -8,6 +8,11 @@ The notes are be available across devices as they are stored using the Microsoft
 
 https://user-images.githubusercontent.com/13404717/209876856-bc68c302-6571-4d4c-9f35-a57bb426f5df.mov
 
+## Features
+- Notes are available across devices/outlook clients
+- Supports dark/light themes (automatically detected)
+- Save note either using button or by pressing ctrl+s/cmd+s
+- Taskpane is pinnable
 
 ## Tested/Supported Applications
 - Outlook for Mac (Version 16.x)
