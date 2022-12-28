@@ -9,6 +9,10 @@ The notes are be available across devices as they are stored using the Microsoft
 https://user-images.githubusercontent.com/13404717/209876856-bc68c302-6571-4d4c-9f35-a57bb426f5df.mov
 
 
+## Tested in Applications
+- Outlook for Mac (Version 16.x)
+- Outlook for Web (using Chrome)
+
 ## Installation
 
 The Add-In is not yet available in the Marketplace, currently it has to be installed as a custom add-in.
