@@ -21,6 +21,9 @@ const darkTheme: PartialTheme = {
   },
 };
 
+// Office.context.officeTheme seems not to be supported for Outlook
+// this would provide us with the colors to use..
+// detect if os prefers dark mode via media query as a workaround, probably does not reflect theme configured in outlook itself correctly
 const useDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 const render = (Component) => {
