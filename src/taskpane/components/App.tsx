@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PrimaryButton, TextField } from "@fluentui/react";
+import { PartialTheme, PrimaryButton, TextField } from "@fluentui/react";
 import Progress from "./Progress";
 
 /* global require */
@@ -8,6 +8,7 @@ export interface AppProps {
   title: string;
   isOfficeInitialized: boolean;
   itemChangedRegister: any;
+  theme: PartialTheme;
 }
 
 export interface AppState {
@@ -57,8 +58,14 @@ export default class App extends React.Component<AppProps, AppState> {
     }
   }
 
-  componentDidMount() {
-    this.loadNotes();
+  componentDidUpdate(prevProps: Readonly<AppProps>, _prevState: Readonly<AppState>, _snapshot?: any): void {
+    if (!prevProps.isOfficeInitialized && this.props.isOfficeInitialized) {
+      this.loadNotes();
+    }
+  }
+
+  componentDidMount(): void {
+    if (this.props.isOfficeInitialized) this.loadNotes();
   }
 
   save = () => {
@@ -120,7 +127,7 @@ export default class App extends React.Component<AppProps, AppState> {
     }
 
     return (
-      <div className="main">
+      <div>
         {
           DEBUG ? (
             <div>
@@ -150,3 +157,4 @@ export default class App extends React.Component<AppProps, AppState> {
     );
   }
 }
+

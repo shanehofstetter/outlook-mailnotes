@@ -1,7 +1,7 @@
 import App from "./components/App";
 import { AppContainer } from "react-hot-loader";
 import { initializeIcons } from "@fluentui/font-icons-mdl2";
-import { ThemeProvider } from "@fluentui/react";
+import { PartialTheme, ThemeProvider } from "@fluentui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -11,12 +11,33 @@ let isOfficeInitialized = false;
 
 const title = "Mailnotes";
 
+const lightTheme: PartialTheme = {
+};
+
+const darkTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: '#1E1E1E',
+    bodyText: 'white',
+  },
+};
+
+const useDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
 const render = (Component) => {
+  const theme = useDarkMode ? darkTheme : lightTheme;
+
   ReactDOM.render(
     <AppContainer>
-      <ThemeProvider>
-        <Component title={title} isOfficeInitialized={isOfficeInitialized} itemChangedRegister={itemChangedRegister} />
-      </ThemeProvider>
+      <div style={{ width: '100%', height: '100%', backgroundColor: theme.semanticColors?.bodyBackground }}>
+        <ThemeProvider theme={theme} style={{ padding: '10px 20px' }}>
+          <Component
+            title={title}
+            isOfficeInitialized={isOfficeInitialized}
+            itemChangedRegister={itemChangedRegister}
+            theme={theme}
+          />
+        </ThemeProvider>
+      </div>
     </AppContainer>,
     document.getElementById("container")
   );
@@ -24,7 +45,7 @@ const render = (Component) => {
 
 let itemChangedHandler: (type: Office.EventType) => void;
 const itemChangedRegister = (f: (type: Office.EventType) => void) => {
-    itemChangedHandler = f;
+  itemChangedHandler = f;
 };
 
 /* Render application after Office initializes */
