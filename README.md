@@ -56,3 +56,7 @@ runs on port 3000 per default
 - select the manifest.xml from the repository
 - installation should succeed and you should see the new Mailnotes Add-In in the taskbar, clicking on it should open the taskpane
 
+
+## Roadmap
+- Autosave
+- Add an icon to mail items in directory if a note exists
